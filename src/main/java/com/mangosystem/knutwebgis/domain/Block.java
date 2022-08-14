@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @Getter @Setter @ToString
 public class Block {
-    private String BlcokId;
+    private String BlockId;
     private String jibunId;
     private String geom;
     private String blockType;
