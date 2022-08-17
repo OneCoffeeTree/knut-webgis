@@ -6,11 +6,6 @@ import com.mangosystem.knutwebgis.service.BlockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.wololo.geojson.Feature;
-import org.wololo.geojson.GeoJSON;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BlockServiceImpl implements BlockService {

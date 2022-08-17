@@ -2,9 +2,6 @@ package com.mangosystem.knutwebgis.persistence;
 
 import com.mangosystem.knutwebgis.domain.Block;
 import org.springframework.stereotype.Repository;
-import org.wololo.geojson.GeoJSON;
-
-import java.util.List;
 
 @Repository
 public interface BlockMapper {

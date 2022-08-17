@@ -1,7 +1,6 @@
 package com.mangosystem.knutwebgis.service;
 
 import com.mangosystem.knutwebgis.domain.Block;
-import org.wololo.geojson.GeoJSON;
 
 import java.util.List;
 
