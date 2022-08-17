@@ -1,11 +1,12 @@
 package com.mangosystem.knutwebgis.service;
 
 import com.mangosystem.knutwebgis.domain.Block;
+import org.wololo.geojson.GeoJSON;
 
 import java.util.List;
 
 public interface BlockService {
 
     /** 블록 목록 조회 **/
-    List<Block> getBlockList(Block block);
+    String getBlockList(Block block);
 }

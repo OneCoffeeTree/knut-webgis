@@ -3,12 +3,21 @@
 
 <mapper namespace="com.mangosystem.knutwebgis.persistence.BlockMapper">
 
-    <select id="getBlockList" parameterType="block" resultType="block">
+    <select id="getBlockList" parameterType="block" resultType="String">
         /* getBlockList */
-        SELECT 'geometry' blockType, block_id, jibun_id, st_asText(geom) geom
-        FROM block_geometry
-        UNION ALL
-        SELECT 'text' blockType, block_id, jibun_id, geom
-        FROM block_text
+        SELECT jsonb_build_object(
+                       'type', 'FeatureCollection',
+                       'features', jsonb_agg(features.feature)
+                   )
+        FROM (
+                 SELECT jsonb_build_object(
+                                'type', 'Feature',
+                                'block_id', block_id,
+                                'jibun_id', jibun_id,
+                                'geometry', st_asgeojson(geom)::jsonb,
+                                'properties', to_jsonb(inputs) - 'gid' - 'geom'
+                            ) AS feature FROM (SELECT 'geometry' blockType, block_id, jibun_id, geom FROM block_geometry) inputs
+             ) features;
+
     </select>
 </mapper>
