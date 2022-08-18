@@ -23,7 +23,7 @@ public class BlockController {
 
     @GetMapping(value="/")
     public ModelAndView index(HttpServletRequest request, Model model) {
-        model.addAttribute("data", "");
+        model.addAttribute("data", "mangosystem");
         return new ModelAndView("/index");
     }
 
