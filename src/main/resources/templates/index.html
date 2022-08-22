@@ -4,8 +4,54 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <title>MangoSystem Sample Page</title>
+  <script type="text/javascript" src="./externlib/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="./externlib/ol-6.4.3/ol.js"></script>
+  <script type="text/javascript" src="./externlib/proj4js-2.4.3/proj4.min.js"></script>
+  <script type="text/javascript" src="./js/prop.js"></script>
+  <script type="text/javascript" src="./js/mapInit.js"></script>
+  <script type="text/javascript" src="./js/mapFunction.js"></script>
+  <link rel="stylesheet" href="./externlib/ol-6.4.3/ol.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <script type="text/javascript">
+	$(document).ready(function() {
+		// 선언
+		$.extend(Mango || {}, {
+			Policy: {
+				// TODO: DB관리 필요
+				serverUrl: 'http://localhost:8081',
+				geoserverDataUrl: 'http://localhost:8080/geoserver',
+				geoserverDataWorkspace: 'seoul',
+				coordinate: 'EPSG:3857',
+				mapExtent: [14054511.753661199, 4475914.807221, 14211054.787589239, 4553110.090826766],
+				mapCenter: [14132783.270625219, 4514512.449023883]
+			}
+		});
+	
+		// 맵 생성
+		Mango.GIS = new MapInit(Mango.Policy);
+	});
+</script>
 <body>
-  <h1>Hello World!!</h1><hr>
-  model: <input th:value="${data}"/>
+
+    <div id="map" class="map"></div>
+    
+    <div id="mouse-position">좌표:</div>
+    
+    <div class="button-ui">
+  		<button onclick="addLayer('admin_sgg', 'WMS', null)">시군구 추가</button>
+	  	<button onclick="addLayer('admin_sid', 'WMS', null)">시도 추가</button>
+	  	<button onclick="addLayer('stores', 'WMS', null)">스토어 추가</button>
+	  	<button onclick="addLayer('dem30', 'RASTER', null)">dem 추가</button>
+	  	<button onclick="addLayer('admin_sid', 'WFS', null)">시도 추가</button>
+	  	<button onclick="addLayer('server', 'SERVER', null)">서버 추가</button>
+	  	<button onclick="addLayer('admin_sgg', 'WPS', 'centroid')">시군구 중심점 추가</button>
+	  	<button onclick="addLayer('admin_sid', 'WPS', 'simplify')">시도 단순화 추가</button>
+    </div>
+    
+    <!-- 팝업 -->
+	<div id="popup" class="ol-popup">
+	</div>
+    
 </body>
+
 </html>
