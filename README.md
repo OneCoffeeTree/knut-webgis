@@ -5,4 +5,4 @@
 - 1일차 : 개발환경 세팅 / PostgreSQL, PostGIS 및 GeoServer 교육
 - 2일차 : BackEnd (Java Spring Boot) 개발 교육
 - 3일차 : OpenLayers 개발 교육
-  test
+  test ?
